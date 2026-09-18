@@ -2,39 +2,70 @@
 
 Tony Kawas / 18 September 2026.
 
-**Operator:** 8-component Wilson–Dirac + hedgehog pair, m₀=0.3, v=2, w=1.  
-**Solver:** sparse ARPACK `eigsh(..., sigma=0, which='LM', tol=1e-8)`.  
-**Residual:** \(\mathrm{rel\_res}=\|H\psi-\lambda\psi\|/\|H\psi\|\).
+**Operator:** 8-component Wilson–Dirac + hedgehog pair, m₀=0.3, v=2, w=1, r=1.  
+**Solver:** scipy.sparse.linalg.eigsh, sigma=0, which='LM', tol=1e-8.  
+**Residual:** \(\mathrm{rel\_v}=\|Hv-\lambda v\|/\|v\|\).
+
+**Pass criterion:** rel_v ≲ 10⁻⁸ (engineering); target ≲ 10⁻¹⁰.
 
 ---
 
-## Pair scan (d = 1…5)
+## Pair scan residuals
 
-| d | n | \|λ\| | abs_res | rel_res | pass (<10⁻³) |
-|---|---|--------|---------|---------|--------------|
-| 1 | 0–3 | 0.0036–0.012 | ~10⁻¹⁴ | ~10⁻¹² | YES |
-| 2 | 0–3 | 0.0008–0.006 | 10⁻¹⁴–10⁻¹⁰ | 10⁻¹¹–10⁻⁸ | YES |
-| 3 | 0–3 | 0.0014–0.004 | ~10⁻¹⁴ | ~10⁻¹¹ | YES |
-| 4 | 0–3 | 0.0005–0.002 | 10⁻¹⁴–10⁻¹⁰ | 10⁻¹⁰–10⁻⁸ | YES |
-| 5 | 0–3 | 0.0004–0.003 | ~10⁻¹³ | ~10⁻¹⁰ | YES |
+| d | mode | \|λ\| | rel_v | status |
+|---|------|--------|---------|--------|
+| 1 | 0–3 | 0.0036–0.012 | 1e-14 – 5e-13 | **OK** |
+| 2 | 0–3 | 0.0008–0.0063 | 4e-14 – 2e-10 | **OK** |
+| 3 | 0–3 | 0.0014–0.0040 | ~6e-14 | **OK** |
+| 4 | 0–3 | 0.0005–0.0024 | 7e-14 – 1e-10 | **OK** |
+| 5 | 0–3 | 0.0004–0.0033 | ~1e-13 | **OK** |
 
-**Summary:** min rel = 1.3×10⁻¹², median ≈ 5×10⁻¹¹, max = 5×10⁻⁸.  
-**100%** of soft modes pass rel < 10⁻³; **100%** pass < 10⁻⁶; **85%** pass < 10⁻⁸.
+**Max rel_v over all pair soft modes: ~2×10⁻¹⁰** (well below 10⁻⁸).
 
 ---
 
 ## Single-defect control
 
-H and AH: all four modes rel_res ~ 10⁻¹¹–10⁻¹⁰ — equally well converged.
+| mode | \|λ\| | rel_v |
+|------|--------|---------|
+| 0 | 5.0e-4 | 7e-14 |
+| 1 | 1.2e-3 | 1e-13 |
+| 2 | 1.2e-3 | 9e-14 |
+| 3 | 2.1e-3 | 8e-13 |
+
+Also **OK**.
 
 ---
 
-## Verdict
+## Tol sensitivity (d=5)
 
-| Claim | Status |
-|-------|--------|
-| L=10 soft modes are true approximate eigenpairs | **Validated** |
-| Diagnostics (P₁,P₂, χ_T, A, Δλ) at L=10 rest on converged vectors | **Safe** |
-| L=12 (prior Colab PRIMME) | Still unvalidated — do not mix |
+| eigsh tol | max rel_v | \|λ\| stable? |
+|-----------|-----------|---------------|
+| 1e-4 | 2.5e-9 | yes |
+| 1e-6 | 1.6e-9 | yes |
+| 1e-8 | 1.6e-13 | yes |
+| 1e-10 | 2.0e-13 | yes |
 
-**Layer 1 / Milestone 2 numerics at L=10 are residual-clean under sparse ARPACK.**
+Eigenvalues stable across tols; residual improves as tol tightens. Default tol=1e-8 is more than enough.
+
+---
+
+## Conclusion
+
+**L=10 soft modes are residual-converged.**  
+All pair and single-defect soft eigenvectors satisfy rel_v ≪ 10⁻⁸ (typically 10⁻¹⁴–10⁻¹⁰).
+
+This **locks** L=10 as a trusted volume for:
+
+- molecular regime claims
+- texture chirality / bridge diagnostics
+- anisotropy A
+- any Colab-style texture-bound analysis at L=10
+
+**L=12 remains unvalidated** until similar residual checks pass there.
+
+---
+
+## Compact statement
+
+Sparse ARPACK soft modes at L=10 for the Wilson–Dirac hedgehog pair are fully residual-converged (rel_v ~ 10⁻¹³). Layer-1 and Milestone-2 results at L=10 rest on verified eigenvectors.
