@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-25",
+  "L": 10,
+  "eps": 0.05,
+  "s_vals": [0.0, 0.25, 0.5, 0.75, 1.0],
+  "d3": {
+    "G_softest": -0.09045058844973697,
+    "G_subspace_avg": -0.17642680817706902,
+    "G_sum_dP": -0.7057072327082755,
+    "endpoint_dS": -0.008821340408782592,
+    "note": "subspace dS more stable than softest dP; soft window compresses at s=0.5"
+  },
+  "d5": {
+    "G_softest": 0.07722227766561406,
+    "G_subspace_avg": 0.09378214576120647,
+    "G_sum_dP": 0.3751285830448267,
+    "endpoint_dS": 0.004689107288058381,
+    "note": "sign opposite to d=3; matches prior static d=5 boost"
+  }
+}
