@@ -1,0 +1,12 @@
+{
+  "L": 10,
+  "d": 3,
+  "s_vals": [0.0, 0.25, 0.4, 0.45, 0.5, 0.55, 0.6, 0.75, 1.0],
+  "path_geodesic_length": 12.351319843234915,
+  "endpoint_direct_geodesic": 2.6727851342157263,
+  "ratio_path_over_chord": 4.621142075775026,
+  "segments_geo": [1.6514, 1.5605, 1.5617, 0.2823, 1.5821, 1.4761, 2.2231, 2.0142],
+  "segments_g_ss": [43.63, 108.23, 975.57, 31.87, 1001.23, 871.56, 219.64, 64.91],
+  "segments_TrPQ": [2.74, 2.824, 2.969, 3.921, 2.956, 2.958, 1.356, 1.573],
+  "notes": "d_geo=sqrt(sum theta_i^2); g_ss~(d_geo/ds)^2; bottleneck min geo and min g_ss"
+}
