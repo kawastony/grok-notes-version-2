@@ -1,0 +1,14 @@
+{
+  "L": 12,
+  "d": 3,
+  "method": "LOBPCG_H2_endpoint_only",
+  "status": "NOT_residual_gated",
+  "s_vals": [0.0, 1.0],
+  "results": [
+    {"s": 0.0, "abs_lam": [0.01747, 0.01917, 0.02096, 0.02316], "dS": 0.0, "note": "mid-spectrum; residual~eigenvalue"},
+    {"s": 1.0, "abs_lam": [0.01418, 0.01648, 0.01934, 0.02071], "dS": 0.00246, "note": "mid-spectrum; residual~eigenvalue"}
+  ],
+  "G_subspace_raw": 0.04909,
+  "TrPQ_endpoint": 0.743,
+  "warning": "Do not interpret as soft multiplet. Shift-invert OOM in sandbox. Need Colab/PRIMME for true L=12 soft modes."
+}
