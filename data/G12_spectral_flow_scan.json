@@ -1,0 +1,20 @@
+{
+  "config": {
+    "L": 10,
+    "d": 3,
+    "k": 4,
+    "m0": 0.3,
+    "v0": 2.0,
+    "ww": 1.0,
+    "r_wilson": 1.0,
+    "eps_max": 0.05,
+    "rel_gate": 1e-06,
+    "core_radius": 2.0,
+    "c1": [5, 5, 4],
+    "c2": [5, 5, 7],
+    "s_vals": [0.0, 0.25, 0.5, 0.75, 1.0]
+  },
+  "G12_end_from_baseline": -0.09045058844979553,
+  "G12_segment": [-0.07089423920117133, 0.44940505883221626, -1.0338997772769298, 0.29358660384670276],
+  "notes": "Quasi-spectral-flow: continuous boost core1 v1=v0*(1+s*eps_max). Tracks lambda(s) and dP(s). Not integer SF. Full mode tables in scan array from local artifacts/G12_spectral_flow_scan.json if needed."
+}
