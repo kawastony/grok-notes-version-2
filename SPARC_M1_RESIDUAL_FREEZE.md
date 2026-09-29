@@ -30,8 +30,6 @@
 
 M1 preferred. Higher X (SB_disk proxy) ↔ larger r_p (smaller μ̂).
 
-Earlier N=78 subsample (same estimator family) gave consistent S≈−0.53 with hierarchical Bayes HDI excluding 0. N=111 is the larger clean sample after corrected Table1 parse.
-
 ---
 
 ## Post-M1 residual correlation (C_ee vs X)
@@ -42,8 +40,6 @@ Earlier N=78 subsample (same estimator family) gave consistent S≈−0.53 with 
 | Drop last bin | 0.0024 | **0.74** |
 
 **Residuals after M1 are consistent with white noise** in X.
-
-Earlier marginal p~0.05 on a smaller/subsample was **not** confirmed on the authoritative N=111 catalog; that signal was sparse-bin sensitive and does not survive.
 
 ---
 
@@ -58,9 +54,8 @@ Earlier marginal p~0.05 on a smaller/subsample was **not** confirmed on the auth
 
 ---
 
-## Next (data order)
+## Next
 
-1. Optional: hierarchical LOO M0 vs M1 on N=111 (confirm elpd gap).
-2. Optional: galaxy-level BTFR residual analysis without r_p.
-3. Cosmology: stage0/1/2 LCDM vs frozen-φ chains can be compared independently.
-4. Micro / lattice only if a *new* residual observable shows non-white structure on raw SPARC.
+1. Optional: hierarchical LOO M0 vs M1 on N=111.
+2. Cosmology: see `COSMOLOGY_COLAB_NOTEBOOK.md`.
+3. Micro / lattice only if a *new* residual observable shows non-white structure on raw SPARC.
